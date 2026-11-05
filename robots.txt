@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sahansalgado.github.io/pdf/sitemap.xml

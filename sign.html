@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sign PDF Online Free — Type, Draw or Upload Signature | Free PDF Tools</title>
+<meta name="description" content="Sign a PDF online for free. Type, draw, or upload your signature and place it anywhere on the document. No signup, no login, no file upload — everything runs in your browser." />
+<meta name="keywords" content="sign pdf online free, pdf signature tool, esign pdf no login, add signature to pdf, draw signature online" />
+<link rel="canonical" href="https://sahansalgado.github.io/pdf/sign.html" />
+<meta name="robots" content="index, follow" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Sign PDF Online Free — Type, Draw or Upload Signature" />
+<meta property="og:description" content="Sign a PDF right in your browser. Type, draw, or upload a signature and place it anywhere. Free, no login, no upload." />
+<meta property="og:url" content="https://sahansalgado.github.io/pdf/sign.html" />
+<meta property="og:site_name" content="Free PDF Tools" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Sign PDF Online Free — Type, Draw or Upload Signature" />
+<meta name="twitter:description" content="Sign a PDF right in your browser. Free, no login, no upload." />
+
+<link rel="stylesheet" href="style.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Dancing+Script:wght@600&family=Great+Vibes&family=Pacifico&display=swap" rel="stylesheet" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Free PDF Signature Tool",
+  "url": "https://sahansalgado.github.io/pdf/sign.html",
+  "applicationCategory": "Utility",
+  "operatingSystem": "Any (runs in browser)",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "Sign a PDF online for free by typing, drawing, or uploading a signature image, then placing it anywhere on the document. No signup or file upload required."
+}
+</script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Sign PDF</h1>
+      <p class="subtitle">Type, draw, or upload a signature — then click where it goes. Nothing leaves your browser.</p>
+      <nav class="top-nav">
+        <a href="index.html">Delete pages</a>
+        <a href="sign.html" class="active">Sign PDF</a>
+      </nav>
+    </header>
+
+    <div id="drop-zone" class="drop-zone">
+      <input type="file" id="file-input" accept="application/pdf" hidden />
+      <div class="drop-zone-content">
+        <p>Drag &amp; drop a PDF here, or</p>
+        <button id="choose-file-btn" class="btn btn-primary">Choose PDF file</button>
+      </div>
+    </div>
+
+    <div id="loading" class="loading hidden">Loading PDF…</div>
+
+    <div id="editor" class="sign-editor hidden">
+      <div class="editor-toolbar">
+        <div class="file-info">
+          <span id="file-name"></span>
+          <span id="page-count"></span>
+        </div>
+        <div class="toolbar-actions">
+          <button id="new-file-btn" class="btn btn-secondary">Load another PDF</button>
+        </div>
+      </div>
+
+      <div class="sign-layout">
+        <div class="sig-panel">
+          <div class="sig-tabs">
+            <button class="sig-tab-btn active" data-tab="type">Type</button>
+            <button class="sig-tab-btn" data-tab="draw">Draw</button>
+            <button class="sig-tab-btn" data-tab="upload">Upload</button>
+          </div>
+
+          <div class="sig-tab-panel" data-panel="type">
+            <input type="text" id="type-input" placeholder="Your name" maxlength="40" />
+            <select id="type-font">
+              <option value="'Dancing Script', cursive">Dancing Script</option>
+              <option value="'Caveat', cursive">Caveat</option>
+              <option value="'Great Vibes', cursive">Great Vibes</option>
+              <option value="'Pacifico', cursive">Pacifico</option>
+            </select>
+            <select id="type-color">
+              <option value="#1a1f2e">Black</option>
+              <option value="#163a8f">Blue</option>
+            </select>
+            <div id="type-preview" class="sig-type-preview">Your name</div>
+          </div>
+
+          <div class="sig-tab-panel hidden" data-panel="draw">
+            <canvas id="draw-canvas" class="sig-draw-canvas" width="500" height="180"></canvas>
+            <div class="sig-draw-controls">
+              <select id="draw-color">
+                <option value="#1a1f2e">Black</option>
+                <option value="#163a8f">Blue</option>
+              </select>
+              <button id="draw-clear-btn" class="btn btn-secondary">Clear</button>
+            </div>
+          </div>
+
+          <div class="sig-tab-panel hidden" data-panel="upload">
+            <input type="file" id="upload-input" accept="image/*" />
+            <div class="sig-upload-preview-wrap">
+              <img id="upload-preview" class="sig-upload-preview hidden" alt="Uploaded signature preview" />
+            </div>
+          </div>
+
+          <button id="add-signature-btn" class="btn btn-primary sig-add-btn">+ Add signature to PDF</button>
+          <p class="hint">A new signature appears on the document. Drag it, resize it with the corner handle, or click elsewhere on a page to move it there.</p>
+        </div>
+
+        <div class="pages-wrap">
+          <div id="pages-container" class="pages-container"></div>
+        </div>
+      </div>
+
+      <div class="editor-footer">
+        <span id="placement-count">0 signatures placed</span>
+        <button id="download-btn" class="btn btn-primary" disabled>Download signed PDF</button>
+      </div>
+    </div>
+
+    <div id="error-box" class="error-box hidden"></div>
+
+    <section class="seo-content">
+      <h2>Free PDF signature tool — no account needed</h2>
+      <p>Signing a PDF usually means uploading it to a website that asks you to create an account or pay for a subscription. This tool skips all of that — it signs your PDF entirely inside your browser using JavaScript, so the file is never uploaded anywhere.</p>
+
+      <h2>How to sign a PDF online</h2>
+      <ol>
+        <li>Drag and drop your PDF, or click "Choose PDF file."</li>
+        <li>Create your signature: type your name in a handwriting-style font, draw it with your mouse or finger, or upload an image of your signature.</li>
+        <li>Click "+ Add signature to PDF," then drag it, resize it, or click anywhere on a page to move it there.</li>
+        <li>Click "Download signed PDF" to save the signed copy.</li>
+      </ol>
+
+      <h2>Frequently asked questions</h2>
+      <h3>Is this PDF signer free to use?</h3>
+      <p>Yes, completely free with no limits and no watermark.</p>
+      <h3>Do I need to create an account?</h3>
+      <p>No. There's no login or signup — just open the page and use it.</p>
+      <h3>Is my PDF or signature uploaded anywhere?</h3>
+      <p>No. Everything — rendering the PDF, drawing the signature, and saving the signed file — happens locally in your browser.</p>
+    </section>
+  </div>
+
+  <footer>
+    <p>Runs entirely locally — no login, no uploads, no cost.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="sign.js"></script>
+</body>
+</html>
